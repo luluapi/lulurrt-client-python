@@ -1,0 +1,27 @@
+Python Client for Lulu Ratings, Reviews and Tags API
+
+The accompanying Python module provides a client for Lulu's Ratings
+and Reviews API. Sample usage:
+
+import rrt_client
+import simplejson as json
+
+key = "my_api_key" #Get it at http://developer.lulu.com
+secret = "my_secret" #Comes with API key. Keep it secret, keep it safe
+
+client = rrt_client.RatereviewJSONClient(key, secret)
+
+try:
+    response = client.getAverageRating(
+                  entities=[{"entity_id": "9780545010221",
+                             "id_group": "isbn13",
+                             "entity_type": "book"}
+                           ],
+                  options={})
+    print json.dumps(response, indent=4, sort_keys=True)
+except TypeError, e:
+    print e
+    print "End-point signature: %s" % client.get_signature('getAverageRating')
+except Exception, e:
+    print e
+
