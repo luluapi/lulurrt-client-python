@@ -1,4 +1,3 @@
-#!/usr/bin/env python25
 # coding=utf-8
 """
 Python client library for Lulu Ratings & Reviews API
